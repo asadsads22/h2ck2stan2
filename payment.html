@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment and Information Page</title>
+  <link rel="shortcut icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #33ff33;
+      font-family: monospace;
+      padding: 40px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    .box {
+      border: 1px solid #33ff33;
+      padding: 20px;
+      box-shadow: 0 0 10px #33ff33;
+      background: #111;
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    .qr {
+      margin: 20px auto;
+      display: block;
+      border: 1px solid #33ff33;
+      width: 200px;
+      height: 200px;
+    }
+    .wallet-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .wallet {
+      font-size: 14px;
+      word-break: break-word;
+      margin-right: 10px;
+    }
+    button.copy-btn {
+      background: #000;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button.copy-btn:hover {
+      background: #33ff33;
+      color: #000;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #000;
+      color: #33ff33;
+      border: 1px solid #33ff33;
+      font-family: monospace;
+      box-sizing: border-box;
+    }
+    button {
+      width: 50%;
+      padding: 10px;
+      background: #000;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #33ff33;
+      color: #000;
+    }
+    .warning {
+      font-size: 12px;
+      color: #ff3333;
+      margin-top: 15px;
+      text-align: center;
+    }
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .box {
+        padding: 15px;
+        max-width: 90%;
+      }
+      .qr {
+        width: 150px;
+        height: 150px;
+      }
+      .wallet-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      button.copy-btn {
+        margin-top: 10px;
+      }
+      button {
+        padding: 12px;
+        margin-top: 15px;
+      }
+    }
+    @media (max-width: 480px) {
+      .qr {
+        width: 120px;
+        height: 120px;
+      }
+      input[type="text"] {
+        padding: 12px;
+        font-size: 14px;
+      }
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2 id="serviceTitle">Service Payment</h2>
+    <p>Please send USDT (BEP20) to the wallet address below:</p>
+    <div class="wallet-container">
+      <div class="wallet" id="walletAddress">0x84CCA50dCC56c7FA16efEd1237930BBa53ABE71E</div>
+      <button class="copy-btn" onclick="copyWalletAddress()">Copy</button>
+    </div>
+    <img src="qr.png" alt="QR code" class="qr">
+
+    <div id="inputContainer"></div>
+    
+    <!-- Ek Telegram girişi -->
+    <form action="save.php" method="POST" onsubmit="return validateForm()">
+      <input type="hidden" name="service" id="hiddenService">
+      <input type="text" name="telegram" id="telegramInput" placeholder="Your Telegram username">
+      <button type="submit">Confirm</button>
+    </form>
+    
+    
+    <div class="warning">
+        Warning: Do not forget to take a screenshot during payment, you will be contacted within 12 hours after payment.
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get('service');
+    document.getElementById("serviceTitle").innerText = service + " Service Payment";
+    document.getElementById("hiddenService").value = service;
+  
+    const inputContainer = document.getElementById("inputContainer");
+  
+    if(service === "Instagram") {
+      inputContainer.innerHTML = '<input type="text" name="target" placeholder="Target Instagram username" id="targetInput">';
+    } 
+    else if(service === "Twitter") {
+      inputContainer.innerHTML = '<input type="text" name="target" placeholder="Target X username" id="targetInput">';
+    } else if(service === "Binance") {
+      inputContainer.innerHTML = '<input type="text" name="target" placeholder="Target Wallet address" id="targetInput">';
+    }
+    else if(service === "Facebook") {
+      inputContainer.innerHTML = '<input type="text" name="target" placeholder="Target Facebook username" id="targetInput">';
+    }
+  
+    function validateForm() {
+      const telegram = document.getElementById("telegramInput").value.trim();
+      const target = document.getElementById("targetInput").value.trim();
+  
+      if (!telegram || !target) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+  
+
+</body>
+</html>

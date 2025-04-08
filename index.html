@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Cyber Privacy Services</title>
+  <link rel="shortcut icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: monospace;
+      margin: 0;
+      padding:0;
+      background: #0d0d0d;
+      color: #33ff33;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: #000;
+      color: #33ff33;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #33ff33;
+      width: 100%;
+    }
+    *, *::before, *::after {
+  box-sizing: border-box;
+}
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px;
+      width: 85%;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #33ff33;
+      border-radius: 4px;
+      margin: 15px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 0 10px #33ff33;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #33ff33;
+    }
+    .card p {
+      color: #99ff99;
+    }
+    .card button {
+      background: #000;
+      color: #33ff33;
+      border: 1px solid #33ff33;
+      padding: 10px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 40%;
+    }
+    .card button:hover {
+      background: #33ff33;
+      color: #000;
+    }
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+        margin: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .card {
+        width: 100%;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Private Cyber Privacy Services</h1>
+    <p>Catalog of specialized digital services</p>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Hack Instagram Account</h2>
+      <p>Hack a person or organization's account, regardless of the number of followers and security level.</p>
+      <p><strong>$200</strong></p>
+      <button onclick="goToPayment('Instagram')">Get Service</button>
+    </div>
+    <div class="card">
+      <h2>Hack Facebook Account</h2>
+      <p>Hack a person or organization's account, regardless of the number of followers and security level.</p>
+      <p><strong>$180</strong></p>
+      <button onclick="goToPayment('Facebook')">Get Service</button>
+    </div>
+    <div class="card">
+      <h2>Hack Twitter Account</h2>
+      <p>Hack a person or organization's account, regardless of the number of followers and security level.</p>
+      <p><strong>$340</strong></p>
+      <button onclick="goToPayment('Twitter')">Get Service</button>
+    </div>
+    <div class="card">
+      <h2>Surprise Egg Binance</h2>
+      <p>Seize a random dead wallet with its contents. You need to withdraw the assets to the bank in the right way.</p>
+      <p><strong>$650</strong></p>
+      <button onclick="goToPayment('Binance')">Get Service</button>
+    </div>
+  </div>
+  <script>
+    function goToPayment(service) {
+      window.location.href = 'payment.html?service=' + service;
+    }
+  </script>
+</body>
+</html>
